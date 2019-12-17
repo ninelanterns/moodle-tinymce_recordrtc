@@ -44,7 +44,10 @@ $PAGE->requires->js(new moodle_url($CFG->wwwroot.MOODLE_TINYMCE_RECORDRTC_ROOT.'
 $PAGE->requires->js(new moodle_url($CFG->wwwroot.MOODLE_TINYMCE_RECORDRTC_ROOT.'tinymce/js/compatcheckmodule.js'), true);
 
 // Get max file upload size.
-$maxuploadsize = ini_get('upload_max_filesize');
+$maxuploadsize = get_user_max_upload_file_size($PAGE->context);
+if ($maxuploadsize <= 0) {
+    $maxuploadsize = PHP_INT_MAX;
+}
 // Determine if the current version of Moodle is 3.2+.
 $moodleversion = intval($CFG->version, 10);
 $moodle32 = 2016120500;

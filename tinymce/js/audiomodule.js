@@ -43,7 +43,7 @@ M.tinymce_recordrtc.view_init = function() {
     uploadBtn = Y.one('button#upload');
     recType = 'audio';
     // Extract the numbers from the string, and convert to bytes.
-    maxUploadSize = window.parseInt(recordrtc.maxfilesize.match(/\d+/)[0], 10) * Math.pow(1024, 2);
+    maxUploadSize = window.parseInt(recordrtc.maxfilesize, 10);
 
     // Show alert and close plugin if WebRTC is not supported.
     M.tinymce_recordrtc.check_has_gum();
